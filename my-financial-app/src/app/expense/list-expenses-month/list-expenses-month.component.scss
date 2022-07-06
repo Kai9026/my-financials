@@ -1,0 +1,55 @@
+.expenses__table {
+
+  width: 100%;
+}
+
+#card__menu {
+
+  width: 60%;
+  top: 35%;
+  left: 18%;
+  padding: 2em;
+
+  mat-card-content {
+
+    margin-top: 2em;
+  }
+
+  #back {
+
+    right: 0;
+    margin-right: 2%;
+    top: 0;
+    margin-top: 1.5%;
+    position: absolute;
+    font-size: 1em;
+
+    mat-icon {
+      font-size: 1em;
+    }
+  }
+
+  .total__div {
+
+    text-align: center;
+    position: relative;
+    left: 40%;
+    margin-top:4%;
+
+    .box {
+
+      width: 15%;
+      border: 2px solid #785f50;
+      padding: 0.5em;
+      color: #785f50;
+    }
+  }
+}
+
+.mat-row:nth-child(even){
+  background-color: red;
+}
+
+.mat-row:nth-child(odd){
+  background-color: black;
+}

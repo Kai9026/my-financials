@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>{report.title}</title>
+        <link rel="stylesheet"
+              href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
+        <link rel="stylesheet"
+              href="/assets/styles.css" />
+        <link rel='icon' href='/assets/favicon.png' type='image/x-icon' sizes="180x180" />
+        <link rel="stylesheet" href="/webjars/bootstrap-icons/1.5.0/font/bootstrap-icons.css" />
+    </head>
+
+    <body>
+        <div id="container">
+            <h3 class="header">
+                <a id="left" href="/expenses/report/web?month={report.getPrevious()}" class="bi bi-arrow-left-circle-fill"></a>
+                <span>{report.getResume()} {report.getMonthValue()}</span>
+                <a id="right" href="/expenses/report/web?month={report.getNext()}" class="bi bi-arrow-right-circle-fill"></a>
+            </h3>
+
+            <div class="table-responsive">
+                {#if report.getExpenses().isEmpty}
+                    No hay gastos para este mes
+                {#else}
+                    <table id="expenses" class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Tipo de gasto</th>
+                                <th scope="col">Inicio periodo</th>
+                                <th scope="col">Fin periodo</th>
+                                <th scope="col">Facturación</th>
+                                <th scope="col">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {#each report.getExpenses()}
+                                {#if count.mod(2) == 0}
+                                    <tr>
+                                {#else}
+                                    <tr class="table-primary">
+                                {/if}
+                                        <td>{it.getType()}</td>
+                                        <td>{it.getStartDate()}</td>
+                                        <td>{it.getEndDate()}</td>
+                                        <td>{it.getBillingDate()}</td>
+                                        <td>{it.getTotal()} €</td>
+                                    </tr>
+                            {/each}
+                        </tbody>
+                    </table>
+                {/if}
+            </div>
+
+            {#if !report.isEmpty()}
+                <a id="download" role="button" class="btn btn-primary" href="/expenses/report/sheet/current?month={report.getMonthNumber()}">Excel</a>
+            {/if}
+        </div>
+    </body>
+</html>
+

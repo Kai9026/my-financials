@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "types": ["@types/node"],
+    "noEmit": true,
+    "allowJs": true
+  },
+  "extends": "./tsconfig.base.json",
+  "include": ["tests/**/*.ts", "src/**/*.ts", ".eslintrc.js"],
+  "exclude": ["./karma.conf.js"]
+}

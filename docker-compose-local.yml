@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  my-financial-api:
+    build:
+      context: ./my-financial-api
+      dockerfile: src/main/docker/Dockerfile.jvm
+    container_name: my-financial-api
+    depends_on:
+      - db
+    environment:
+      QUARKUS_PROFILE: docker
+      QUARKUS_DATASOURCE_REACTIVE_URL: xxxxxxxx
+      QUARKUS_OIDC_CLIENT_ID: xxxxxxxx
+      QUARKUS_DATASOURCE_USERNAME: xxxx
+      QUARKUS_DATASOURCE_PASSWORD: xxxx
+      QUARKUS_OIDC_AUTH_SERVER_URL: xxxx
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+    - 8888:8080
+    restart: always
+
+  db:
+    image: postgres:latest
+    container_name: my-financial-db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./my-financial-api/src/main/docker/postgres:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+      - 5432:5432
+    restart: always
+
+  my-financial-app:
+    build:
+      context: ./my-financial-app
+      dockerfile: Dockerfile
+    container_name: my-financial-app
+    depends_on:
+      - my-financial-api
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+      - 80:80
+    restart: always
+
+
+volumes:
+  db-data:
+    driver: local

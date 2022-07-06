@@ -1,0 +1,1 @@
+web: java -Dquarkus.http.port=$PORT -Dquarkus.oidc.auth-server-url=$OIDC_URL -Dquarkus.oidc.client-id=$OIDC_CLIENT -Dquarkus.datasource.reactive.url=$DB_URL -Dquarkus.datasource.password=$DB_PWD -Dquarkus.datasource.username=$DB_USER $JAVA_OPTS -jar target/quarkus-app/*.jar

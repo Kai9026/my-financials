@@ -1,0 +1,44 @@
+@import './assets/css/colors.theme.scss';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: url('assets/app-background.png');
+  background-repeat: repeat;
+  background-color: $base-color;
+  padding-bottom: 15%;
+}
+
+#card__menu {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  background-color: $monochromatic-2;
+
+  mat-card-title {
+    text-align: center;
+    color: $monochromatic-3;
+  }
+
+  .buttonApp {
+    background-color: $monochromatic-3;
+    color: $white;
+    width: 60%;
+  }
+}
+
+mat-form-field {
+
+  width: 50%;
+}
+
+.bold {
+
+  font-weight: bold;
+}
+

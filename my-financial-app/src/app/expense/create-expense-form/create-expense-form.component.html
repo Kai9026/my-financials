@@ -1,0 +1,77 @@
+<mat-card id="card__menu">
+
+  <mat-card-title>
+    <span>Nuevo gasto</span>
+    <button mat-button color="primary" id="back" (click)="goBack()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </mat-card-title>
+
+  <mat-card-content>
+    <mat-grid-list cols="1" rowHeight="7:1">
+
+    <form [formGroup]="expenseForm" (ngSubmit)="create()">
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de gasto</mat-label>
+          <mat-select formControlName="type" required>
+            <mat-option value="AGUA">AGUA</mat-option>
+            <mat-option value="LUZ">LUZ</mat-option>
+            <mat-option value="GAS">GAS</mat-option>
+          </mat-select>
+          <mat-hint *ngIf="!type?.valid && (type?.dirty || type?.touched)" align="end">Campo obligatorio</mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha inicio</mat-label>
+          <input matInput [matDatepicker]="start" formControlName="startDate" required>
+          <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+          <mat-datepicker #start></mat-datepicker>
+          <mat-hint *ngIf="!startDate?.valid && (startDate?.dirty || startDate?.touched)" align="end">Campo obligatorio</mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha fin</mat-label>
+          <input matInput [matDatepicker]="end" formControlName="endDate" required>
+          <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+          <mat-datepicker #end></mat-datepicker>
+          <mat-hint *ngIf="!endDate?.valid && (endDate?.dirty || endDate?.touched)" align="end">Campo obligatorio</mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha cobro</mat-label>
+          <input matInput [matDatepicker]="billing" formControlName="billingDate" required>
+          <mat-datepicker-toggle matSuffix [for]="billing"></mat-datepicker-toggle>
+          <mat-datepicker #billing></mat-datepicker>
+          <mat-hint *ngIf="!billingDate?.valid && (billingDate?.dirty || billingDate?.touched)" align="end">Campo obligatorio</mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Total gasto</mat-label>
+          <input matInput placeholder="24.50" formControlName="total" required>
+          <span matPrefix>€&nbsp;</span>
+          <mat-hint *ngIf="!total?.valid && (total?.dirty || total?.touched)" align="end">Campo obligatorio</mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button id="save" *ngIf="!isProcessing" color="primary" type="submit" [disabled]="!expenseForm.valid">Crear gasto</button>
+        <mat-spinner *ngIf="isProcessing" color="primary"></mat-spinner>
+      </mat-grid-tile>
+
+    </form>
+
+    </mat-grid-list>
+
+  </mat-card-content>
+
+</mat-card>

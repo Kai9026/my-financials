@@ -1,0 +1,31 @@
+
+<mat-card id="card__menu">
+
+  <mat-card-title> Bienvenido Arkaitz, ¿en qué te puedo ayudar? </mat-card-title>
+
+  <mat-card-content matRipple >
+
+    <mat-grid-list cols="1" rowHeight="6:1">
+      <mat-grid-tile>
+        <a mat-raised-button class="buttonApp" routerLink="/new-expense">
+          Quiero crear un nuevo gasto
+        </a>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <a mat-raised-button class="buttonApp" [href]="reportInProgress">
+          Descargar informe de gastos del año en curso
+        </a>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <a mat-raised-button class="buttonApp" routerLink="/current-expenses">
+          Ver informe de gastos del mes actual
+        </a>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </mat-card-content>
+
+</mat-card>

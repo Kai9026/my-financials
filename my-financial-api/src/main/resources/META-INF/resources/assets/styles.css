@@ -1,0 +1,54 @@
+#container {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 85%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 2em;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+body {
+    background-image: url("/assets/fondo3.png");
+}
+
+#download {
+    text-align: center;
+    width: 20%;
+}
+
+#left, #right {
+    display: flex;
+    font-size: calc(2rem + .6vw);
+    text-decoration: none;
+}
+
+#left:hover, #right:hover {
+    text-decoration: none
+}
+
+#expenses {
+    box-shadow: 0 0 20px rgba(207, 226, 255, 0.95);
+}
+
+.table-responsive {
+    margin-bottom: 2%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header span {
+    display: flex;
+}

@@ -1,0 +1,29 @@
+#card__menu {
+
+  top: 10%;
+  width: 40%;
+
+  #back {
+
+    right: 0;
+    margin-right: 2%;
+    top: 0;
+    margin-top: 1.5%;
+    position: absolute;
+    font-size: 1em;
+
+    mat-icon {
+      font-size: 1em;
+    }
+  }
+}
+
+mat-card-content {
+
+  margin-top: 5%;
+}
+
+button #save {
+
+  width: 40%;
+}
